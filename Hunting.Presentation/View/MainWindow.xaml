@@ -1,0 +1,76 @@
+﻿<Window x:Class="Hunting.Presentation.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hunting.Presentation.View"
+        mc:Ignorable="d"
+        Title="Hunting" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Game" Height="22">
+                <MenuItem Header="New Game" >
+                    <MenuItem Header="3x3" Command="{Binding NewGameCommand}" CommandParameter="{Binding Easy}"/>
+                    <MenuItem Header="5x5" Command="{Binding NewGameCommand}" CommandParameter="{Binding Medium}"/>
+                    <MenuItem Header="7x7" Command="{Binding NewGameCommand}" CommandParameter="{Binding Hard}"/>
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Load Game" Command="{Binding LoadGameCommand}" />
+                <MenuItem Header="Save Game" Command="{Binding SaveGameCommand}" />
+                <Separator />
+                <MenuItem Header="Exit Game" Command="{Binding ExitGameCommand}" />
+            </MenuItem>
+        </Menu>
+        <ItemsControl Grid.Row="1" ItemsSource="{Binding Fields}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <UniformGrid Rows="{Binding GridSize}" Columns="{Binding GridSize}"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Black">
+                        <Grid>
+                            <Image>
+                                <Image.Style>
+                                    <Style TargetType="Image">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding IsHunter}" Value="true">
+                                                <Setter Property="Image.Source" Value="..\Resources\cat7.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsPrey}" Value="true">
+                                                <Setter Property="Image.Source" Value="..\Resources\tuna.png"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding IsEmpty}" Value="true">
+                                                <Setter Property="Image.Source" Value="..\Resources\empty.png"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                                <Image.InputBindings>
+                                    <MouseBinding Gesture="LeftClick" Command="{Binding ImageClickCommand}" CommandParameter="{Binding}"/>
+                                </Image.InputBindings>
+                            </Image>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="Turn count: "/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <TextBlock Text="{Binding TurnCount}"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <TextBlock Text="{Binding WhosTurn}"/>
+            </StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>
