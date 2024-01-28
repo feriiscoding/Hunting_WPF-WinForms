@@ -12,5 +12,8 @@ lépések számát, és ismerje fel, ha vége a játéknak. Ekkor jelenítse meg
 játékos győzött, majd kezdjen automatikusan új játékot. Ezen felül legyen
 lehetőség a játék elmentésére, valamint betöltésére.
 
-Követelmények: A megvalósításnak felhasználóbarátnak, és könnyen kezelhetőnek kell lennie. A szerkezetében törekednie kell az objektumorientált szemlélet megtartására. A programot MVVM architektúrában kell felépíteni. A modell funkcionalitását egységtesztek segítségével kell ellenőrizni. A megvalósítást legalább két választott platformra el kell elkészíteni.
+Követelmények: A megvalósításnak felhasználóbarátnak, és könnyen kezelhetőnek kell lennie. A szerkezetében törekednie kell az objektumorientált szemlélet megtartására. A programot háromrétegű (modell/nézet/perzisztencia) architektúrában kell felépíteni. A modell funkcionalitását egységtesztek segítségével kell ellenőrizni.
+
+Követelmények: A megvalósításnak felhasználóbarátnak, és könnyen kezelhetőnek kell lennie. A szerkezetében törekednie kell az objektumorientált szemlélet megtartására. A programot MVVM architektúrában kell felépíteni. A modell funkcionalitását egységtesztek segítségével kell ellenőrizni.
+
 Dokumentáció: Tartalmaznia kell a feladat elemzését, felhasználói eseteit (UML felhasználói esetek diagrammal), a program szerkezetének leírását (UML osztálydiagrammal), valamint a tesztesetek ismertetését.
